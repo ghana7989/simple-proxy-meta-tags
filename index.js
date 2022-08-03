@@ -1,10 +1,10 @@
-const app = require('express')();
+const express = require('express');
 const cors = require('cors');
-const {json} = require('express');
 const {parser} = require('html-metadata-parser');
+const app = express();
 
-app.use(json());
 app.use(cors());
+app.use(express.json());
 
 app.get('/health', (req, res) => {
 	res.send('OK');
@@ -12,12 +12,13 @@ app.get('/health', (req, res) => {
 
 app.post('/proxy/get-meta', async (req, res) => {
 	const {url} = req.body;
-	const data = await parser(url);
+
+	const data = await parser(url, {});
 	res.json(data);
 });
 
-app.listen(process.env.PORT || 3000, () => {
-	console.log('Example app listening on port 3000!');
+app.listen(process.env.PORT || 8080, () => {
+	console.log('Example app listening on port 8080! => http://localhost:8080');
 });
 
 module.exports = app;

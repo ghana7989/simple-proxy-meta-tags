@@ -1,0 +1,10 @@
+POST https://simple-proxy-meta-tags-os4b20rmz-ghana7989.vercel.app/proxy/get-meta HTTP/1.1
+content-type: application/json
+
+{
+  "url": "https://www.fb.com"
+}
+
+###
+
+GET https://simple-proxy-meta-tags-os4b20rmz-ghana7989.vercel.app/health HTTP/1.1
